@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="modal-title pt-4 px-3">
+        <h4>Add New Task</h4>
+        <hr>
+    </div>
+    <form [formGroup]="newTaskForm" (submit)="onSubmit()">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="taskId" class="form-label">Task Id</label>
+                    <input type="text" class="form-control" name="taskId" id="taskId" formControlName="taskId">
+                </div>
+                <div class="col mb-3">
+                    <label for="taskName" class="form-label">Task Name</label>
+                    <input type="text" class="form-control" name="taskName" id="taskName" formControlName="taskName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="taskDescription" class="form-label">Select Status</label>
+                    <select class="form-select" aria-label="Default select example" aria-placeholder="Change Status"
+                        formControlName="selectTaskState">
+                        <ng-container *ngFor="let c of allState">
+                            <option [ngValue]="c">{{ c | titlecase }}</option>
+                        </ng-container>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="taskDescription" class="form-label">Task Description</label>
+                    <textarea type="text" class="form-control" name="taskDescription"
+                        formControlName="taskDescription"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                    <button type="button" class="btn btn-danger" (click)="gotoDashboard()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,99 @@
+<div class="container-fluid px-5 h-100">
+    <div class="row">
+        <div class="col bg-primary-subtle py-4">
+            <h3 class="text-primary-emphasis ">Draggable Div</h3>
+            <button type="button" class="btn btn-primary float-end me-3" (click)="addNewTask()" >Add Task</button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <h4>TODO :</h4>
+        </div>
+        <div class="col">
+            <h4>In Progress :</h4>
+        </div>
+        <div class="col">
+            <h4>In Completed :</h4>
+        </div>
+        <div class="col">
+            <h4>In Progress :</h4>
+        </div>
+        <div class="col">
+            <h4>Bug Found :</h4>
+        </div>
+    </div>
+    <div [formGroup]="taskGroup">
+        <div class="row">
+            <div class="col vh-100 " (dragleave)="dragEnd($event, 'todo')">
+                <ng-container *ngFor="let task of items; index as i" >
+                    <div class="card my-3" *ngIf="task.state == 'todo'"
+                        (dragstart)="dragStart($event, i, task.id, 'todo')" (dragover)="updateList($event, i, 'todo')"
+                        draggable="true" >
+                        <div class="card-header">
+                            <h5 class="card-title">{{task.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{task.detail}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col vh-100 " (dragleave)="dragEnd($event, 'progress')">
+                <ng-container *ngFor="let task of items; index as i">
+                    <div class="card my-3" *ngIf="task.state == 'progress'"
+                        (dragstart)="dragStart($event, i, task.id, 'progress')"
+                        (dragover)="updateList($event, i, 'progress')" draggable="true">
+                        <div class="card-header">
+                            <h5 class="card-title">{{task?.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{task?.detail}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col vh-100" (dragleave)="dragEnd($event, 'completed')">
+                <ng-container *ngFor="let task of items; index as i">
+                    <div class="card my-3" *ngIf="task.state == 'completed'"
+                        (dragstart)="dragStart($event, i, task.id, 'completed')"
+                        (dragover)="updateList($event, i, 'completed')" draggable="true">
+                        <div class="card-header">
+                            <h5 class="card-title">{{task?.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{task?.detail}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col vh-100" (dragleave)="dragEnd($event, 'review')">
+                <ng-container *ngFor="let task of items; index as i">
+                    <div class="card my-3" *ngIf="task.state == 'review'"
+                        (dragstart)="dragStart($event, i, task.id, 'review')"
+                        (dragover)="updateList($event, i, 'review')" draggable="true">
+                        <div class="card-header">
+                            <h5 class="card-title">{{task?.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{task?.detail}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col vh-100" (dragleave)="dragEnd($event, 'bug')">
+                <ng-container *ngFor="let task of items; index as i">
+                    <div class="card my-3" *ngIf="task.state == 'bug'"
+                        (dragstart)="dragStart($event, i, task.id, 'bug')"
+                        (dragover)="updateList($event, i, 'bug')" draggable="true">
+                        <div class="card-header">
+                            <h5 class="card-title">{{task?.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{task?.detail}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

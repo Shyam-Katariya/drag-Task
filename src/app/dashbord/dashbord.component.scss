@@ -1,0 +1,35 @@
+
+.col{
+    overflow-y: scroll;
+    overflow: auto;
+}
+
+.col::-webkit-scrollbar {
+	width: 10px;
+    
+}
+
+.col::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: solid #fff 2px;
+	border-radius: 4px;
+}
+
+.col::-webkit-scrollbar-track-piece {
+	background: transparent;
+}
+
+.col::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  background-color: #00416A;
+  //   color: rgb(57, 141, 236);
+  color: white;
+}
+.card-body {
+  background-color:#00416A;
+  color: white;
+  font-weight: bold;
+}
